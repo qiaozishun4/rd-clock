@@ -1,0 +1,102 @@
+<!-- Made By RealDream -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多功能计时器</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="container">
+        <div class="timer-container">
+            <!-- 时间显示区域 -->
+            <div id="display">
+                <span id="hours" class="time-part">00</span>
+                <span class="time-separator">:</span>
+                <span id="minutes" class="time-part">00</span>
+                <span class="time-separator">:</span>
+                <span id="seconds" class="time-part">00</span>
+                <span class="milliseconds">
+                    .<span id="milliseconds">00</span>
+                </span>
+            </div>
+
+            <!-- 控制按钮区 -->
+            <div class="controls">
+                <button id="startBtn" class="btn control-btn" title="开始 (Space)">
+                    ▶️
+                </button>
+                <button id="pauseBtn" class="btn control-btn" title="暂停 (Space)">
+                    ⏸️
+                </button>
+                <button id="resetBtn" class="btn control-btn" title="重置 (Esc)">
+                    🔄
+                </button>
+                
+                <div class="extra-controls">
+                    <button id="lapBtn" class="btn extra-btn" title="记圈 (L)">
+                        ⏺️
+                    </button>
+                    <button id="settingsBtn" class="btn extra-btn" title="设置 (S)">
+                        ⚙️
+                    </button>
+                    <button id="soundBtn" class="btn extra-btn" title="切换声音">
+                        <span class="sound-icon">🔊</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 设置面板 -->
+            <div class="settings-panel hidden">
+                <div class="time-input-group">
+                    <input type="number" id="setHours" min="0" max="23" 
+                           placeholder="HH" class="time-input">
+                    <span class="input-label">小时</span>
+                    
+                    <input type="number" id="setMinutes" min="0" max="59"
+                           placeholder="MM" class="time-input">
+                    <span class="input-label">分钟</span>
+                    
+                    <input type="number" id="setSeconds" min="0" max="59"
+                           placeholder="SS" class="time-input">
+                    <span class="input-label">秒</span>
+                </div>
+
+                <div class="mode-selection">
+                    <label for="modeSelect">计时模式：</label>
+                    <select id="modeSelect" class="mode-select">
+                        <option value="up">正计时 ⏲️</option>
+                        <option value="down">倒计时 ⏳</option>
+                    </select>
+                </div>
+
+                <div class="settings-btns">
+                    <button id="confirmSettings" class="btn confirm-btn">
+                        ✅ 确认
+                    </button>
+                    <button id="cancelSettings" class="btn cancel-btn">
+                        ❌ 取消
+                    </button>
+                </div>
+            </div>
+
+            <!-- 记录列表 -->
+            <div class="laps-container">
+                <h3>分段记录 📝</h3>
+                <ul class="laps-list"></ul>
+            </div>
+        </div>
+
+        <footer class="app-footer">
+            Made By RealDream
+        </footer>
+    </main>
+
+    <!-- 声音元素 -->
+    <audio id="beepSound" src="beep.mp3"></audio>
+    
+    <script src="app.js"></script>
+</body>
+</html>
+<!-- Made By RealDream -->
