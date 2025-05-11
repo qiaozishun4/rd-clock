@@ -1,0 +1,200 @@
+/* Made By RealDream */
+/* 基础重置 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: #f0f2f5;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 主容器 */
+.timer-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  width: min(90%, 800px);
+}
+
+/* 时间显示区域 */
+#display {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: 'Courier New', monospace;
+  margin-bottom: 2rem;
+  position: relative;
+  transition: border-color 0.3s;
+}
+
+#display.running {
+  border: 3px solid #ff4757;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.time-part {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #2d3436;
+  transition: transform 0.2s;
+}
+
+.milliseconds {
+  font-size: 1.5rem;
+  color: #636e72;
+}
+
+/* 控制按钮 */
+.controls {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.btn {
+  border: none;
+  padding: 1rem;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: #f8f9fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.control-btn {
+  font-size: 1.5rem;
+}
+
+.btn:hover {
+  background: #e9ecef;
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* 设置面板 */
+.settings-panel {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.settings-panel.active {
+  transform: translate(-50%, 20%);
+  opacity: 1;
+  visibility: visible;
+}
+
+.time-input {
+  width: 80px;
+  padding: 0.5rem;
+  border: 2px solid #ced4da;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.time-input:focus {
+  border-color: #4bcffa;
+  outline: none;
+}
+
+/* 记录列表 */
+.laps-list {
+  max-height: 200px;
+  overflow-y: auto;
+  margin-top: 1rem;
+}
+
+.laps-list li {
+  padding: 0.8rem;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  animation: slideIn 0.3s ease-out;
+}
+
+/* 动画 */
+@keyframes breathing {
+  0% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.status-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-left: 1rem;
+  animation: breathing 1.5s infinite;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .timer-container {
+    padding: 1rem;
+  }
+
+  .time-part {
+    font-size: 2rem;
+  }
+
+  .controls {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 状态变化 */
+.running .time-part {
+  color: #ff4757;
+}
+
+.paused {
+  background: #fff3cd !important;
+}
+
+.sound-off .sound-icon {
+  filter: grayscale(1);
+  opacity: 0.5;
+}
+
+.error-message {
+  color: #ff4757;
+  font-size: 0.9rem;
+  position: absolute;
+  bottom: -1.5rem;
+}
