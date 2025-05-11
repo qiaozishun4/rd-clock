@@ -90,8 +90,7 @@
 
 本项目采用 [MIT License](LICENSE)
 
-Copyright © 2023 [RealDream](https://github.com/RealDream)
-```
+Copyright © 2025 [RealDream](https://github.com/qiaozishun4)
 
 ---
 
